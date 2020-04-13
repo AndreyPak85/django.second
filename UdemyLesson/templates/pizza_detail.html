@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pizza {{pizza.name}}
+{% endblock %}
+
+
+{% block content%}
+<a href="{% url 'home' %}">Главная</a>
+<h2>This is page Index.html</h2>
+    <h2>{{ pizza.name }}</h2>
+    {% if pizza.photo %}
+<img src="{{ pizza.photo.url }}" alt="pizza.name">
+{% endif %}
+
+<p>{{pizza.short_description }}</p>
+
+<h2>order</h2>
+{% if sent %}
+    <h3>Thx you, Your Order is save</h3>
+{% endif%}
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form.as_ul }}
+    <input type="submit" name="" id="" value="send order">
+
+</form>
+
+{% endblock %}

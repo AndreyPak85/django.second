@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>This is page Index.html</h2>
+
+    {% for i in pizzas  %}
+
+    <a href="{% url 'pizza_detail' pizza_id=i.id %} ">{{i.name}}</a>
+        <h4>{{i.name}}</h4>
+        {% if i.photo  %}
+            <img src="{{i.photo.url}}" alt="{{i.name}}">
+        {% endif %}
+        <h4>{{i.short_description}}</h4>
+        <h4>{{i.price|floatformat:"2"}}</h4>
+    {% endfor %}
+
+{% endblock %}
