@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Login</title>
 </head>
 <body>
-$END$
+    <h2>Enter</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+
+        <button type="submit">Enter</button>
+
+
+
+    </form>
+
 </body>
 </html>

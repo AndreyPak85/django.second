@@ -1,6 +1,22 @@
 from django import forms
+from django.core import validators
+
+
+def check_for_a(value):
+    if value[0].lower() != 'a':
+        raise forms.ValidationError('Make need to start wit - a')
+
 
 class NameForm(forms.Form):
-    name = forms.CharField()
+    name = forms.CharField(validators=[check_for_a])
     email = forms.EmailField()
-    text = forms.CharField(widget=forms.Textarea)
+    verify_email = forms.EmailField(label="Enter your email again")
+    text = forms.CharField(widget=forms.Textarea, validators=[validators.MaxLengthValidator(5)])
+
+def clean(self):
+    cleaned_data = super().clean()
+    email = cleaned_data['email']
+    vmail = cleaned_data['verify_email']
+    if email != vmail:
+        raise forms.ValidationError("make validate")
+    return cleaned_data
