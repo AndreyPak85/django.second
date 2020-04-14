@@ -34,6 +34,7 @@ urlpatterns = [
     #url(r'formpage/', views.form_page, name='form-page'),
     #url(r'authapp/login/$', views.LoginView.as_view(template_name=template_name), name='login'),
     url(r'authapp/login/$', LoginView.as_view(), {'template_name': 'authapp/login.html'}, name='authapp-login'),
+    url(r'authapp/sing-up', views.authapp_sign_up, name='authapp-sing-up'),
 
 
 
