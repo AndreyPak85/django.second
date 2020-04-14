@@ -21,13 +21,15 @@ from firstapp import views
 from django.conf.urls.static import static
 from django.conf import settings
 #from teststaticapp import views
+from validformapp import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #url(r'^test_app/', include('testurlapp.test_urls')),
     #url(r'^$', views.home),
-    url(r'^$', views.home, name='home'),
-    url(r'^(?P<pizza_id>\d+)/$', views.pizza_detail, name='pizza_detail'),
+    #url(r'^$', views.home, name='home'),
+    #url(r'^(?P<pizza_id>\d+)/$', views.pizza_detail, name='pizza_detail'),
+    url(r'formpage/', views.form_page, name='form-page'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
